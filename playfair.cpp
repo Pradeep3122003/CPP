@@ -256,7 +256,7 @@ void decrypt()
   }
   
 }
-cout<<"Cipher: "<<input;
+cout<<"Cipher: "<<input<<endl;
 cout<<"Message: "<<output;
 output="";
 cout<<"\n----------------------------------"<<endl;
