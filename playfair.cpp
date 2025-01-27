@@ -141,6 +141,22 @@ if(input[i]!=' ')
 input=temp;
 temp="";
 cout<<input<<endl;
+cout<<c<<endl;
+for(int i=0;i<input.size();i++)
+{
+  if(input[i]==input[i-1] && i>0)
+  {
+     temp+="X";
+     temp+=input[i];
+  }
+  else
+{
+  temp+=input[i];
+}
+}
+input=temp;
+temp="";
+cout<<input<<endl;
 cout<<"\n----------------------------------"<<endl;
 }
 
