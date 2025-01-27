@@ -206,8 +206,21 @@ for(int i=0;i<input.size();i+=2)
   v1=col(input[i]);
   h2=row(input[i+1]);
   v2=col(input[i+1]);
-  output+=kgraph[h1][v2];
-  output+=kgraph[h2][v1];
+  if(h1==h2)
+  {
+    output+=kgraph[h1][(v1+1)%5];
+    output+=kgraph[h2][(v2+1)%5];
+  }
+  else if(v1==v2)
+  {
+   output+=kgraph[(h1+1)%5][v1];
+   output+=kgraph[(h2+1)%5][v2];
+  }
+  else{
+   output+=kgraph[h1][v2];
+   output+=kgraph[h2][v1];
+  }
+  
 }
 cout<<"Cipher: "<<output;
 output="";
