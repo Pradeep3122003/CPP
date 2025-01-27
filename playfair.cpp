@@ -275,6 +275,8 @@ void choice()
          break;
   case 2: encrypt();
          break;
+  case 3: decrypt();
+         break;
   case 4: graphdis();
          break;
   default: cout<<"Unknown option"<<endl;
