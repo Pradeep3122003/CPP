@@ -110,14 +110,46 @@ choice();
 void graphdis()
 {
      for(int i=0;i<5;i++)
-{
-for(int j=0;j<5;j++)
-{
-   cout<<kgraph[i][j]<<"\t";
-}
-cout<<endl;
-}
+     {
+       for(int j=0;j<5;j++)
+       {
+          cout<<kgraph[i][j]<<"\t";
+       }
+       cout<<endl;
+     }
 cout<<"\n----------------------------------"<<endl;
+}
+
+int row(char a)
+{
+  for(int i=0;i<5;i++)
+     {
+       for(int j=0;j<5;j++)
+       {
+          if(kgraph[i][j] == a)
+          {
+             return i;
+          }
+       }
+       
+     }
+return 0;
+}
+
+int col(char a)
+{
+ for(int i=0;i<5;i++)
+     {
+       for(int j=0;j<5;j++)
+       {
+          if(kgraph[i][j] == a)
+          {
+             return j;
+          }
+       }
+       
+     }
+return 0;
 }
 
 void encrypt()
@@ -128,7 +160,7 @@ void encrypt()
   cin.ignore();
   getline(cin,input);
   input=capitalize(input);
-  cout<<input<<endl;
+  
   for(int i=0;i<input.size();i++)
 {
 
@@ -141,8 +173,7 @@ if(input[i]!=' ')
 }
 input=temp;
 temp="";
-cout<<input<<endl;
-cout<<c<<endl;
+
 for(int i=0;i<input.size();i+=2)
 {
   if(input[i]==input[i+1])
@@ -165,8 +196,21 @@ for(int i=0;i<input.size();i+=2)
 }
 input=temp;
 temp="";
-cout<<input<<endl;
-cout<<c<<endl;
+cout<<"Input: "<<input<<endl;
+cout<<"Length: "<<c<<endl;
+
+for(int i=0;i<input.size();i+=2)
+{
+  int h1,v1,h2,v2;
+  h1=row(input[i]);
+  v1=col(input[i]);
+  h2=row(input[i+1]);
+  v2=col(input[i+1]);
+  output+=kgraph[h1][v2];
+  output+=kgraph[h2][v1];
+}
+cout<<"Cipher: "<<output;
+output="";
 cout<<"\n----------------------------------"<<endl;
 }
 
