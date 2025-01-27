@@ -58,6 +58,7 @@ temp+=key[0];
     }
   }
   key=temp;
+  
   string strength= (key.length() > 5)?"good":"normal";
   cout<<"-----------------------------"<<endl;
   cout<<"Key : "<<key<<endl;
@@ -121,11 +122,26 @@ cout<<"\n----------------------------------"<<endl;
 
 void encrypt()
 {
+  int c=0;
+  temp="";
   cout<<"Enter message: "<<endl;
   cin.ignore();
   getline(cin,input);
   input=capitalize(input);
   cout<<input<<endl;
+  for(int i=0;i<input.size();i++)
+{
+
+if(input[i]!=' ')
+{
+  c++;
+  temp+=input[i];
+}
+}
+input=temp;
+temp="";
+cout<<input<<endl;
+cout<<"\n----------------------------------"<<endl;
 }
 
 void choice()
