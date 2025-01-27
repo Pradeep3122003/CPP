@@ -134,29 +134,39 @@ void encrypt()
 
 if(input[i]!=' ')
 {
-  c++;
+  
   temp+=input[i];
+  c++;
 }
 }
 input=temp;
 temp="";
 cout<<input<<endl;
 cout<<c<<endl;
-for(int i=0;i<input.size();i++)
+for(int i=0;i<input.size();i+=2)
 {
-  if(input[i]==input[i-1] && i>0)
+  if(input[i]==input[i+1])
   {
-     temp+="X";
+    
      temp+=input[i];
+     temp+="X";
+    
+     c++;
+     i-=1;
+     
+     
   }
   else
 {
   temp+=input[i];
+  temp+=input[i+1];
+  
 }
 }
 input=temp;
 temp="";
 cout<<input<<endl;
+cout<<c<<endl;
 cout<<"\n----------------------------------"<<endl;
 }
 
