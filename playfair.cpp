@@ -194,6 +194,11 @@ for(int i=0;i<input.size();i+=2)
   
 }
 }
+if(c%2==1)
+{
+  c++;
+  temp+="X";
+}
 input=temp;
 temp="";
 cout<<"Input: "<<input<<endl;
