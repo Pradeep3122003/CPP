@@ -16,26 +16,27 @@ public:
   
     cout<<"\nEnter key: ";
     cin>>key;
-    capitalize();
+    key=capitalize(key);
     keycheck();
   
   }
 
- void capitalize()
+ string capitalize(string a)
 {
    
- for(int i=0;i<key.size();i++)
+ for(int i=0;i<a.size();i++)
 {
-  if (key[i] >90)
+  if (a[i] >90 && a[i]!=' ')
   {
-    key[i]-=32;
+    a[i]-=32;
   }
 
-  if(key[i]==74)
+  if(a[i]==74)
   {
-    key[i]=73;
+    a[i]=73;
   }
 }
+return a;
 }
 
   void keycheck()
@@ -118,6 +119,15 @@ cout<<endl;
 cout<<"\n----------------------------------"<<endl;
 }
 
+void encrypt()
+{
+  cout<<"Enter message: "<<endl;
+  cin.ignore();
+  getline(cin,input);
+  input=capitalize(input);
+  cout<<input<<endl;
+}
+
 void choice()
 {
  int i=0;
@@ -127,6 +137,8 @@ void choice()
   cin>>i;
   switch(i){
   case 1: keycheck();
+         break;
+  case 2: encrypt();
          break;
   case 4: graphdis();
          break;
