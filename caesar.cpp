@@ -78,7 +78,7 @@ void encrypt()
    }
   }
   cout<<"Cipher: "<<output<<endl;
-  cout<<"\n---------------------------"<<endl;
+ 
 
   
 }
@@ -91,9 +91,21 @@ void decrypt()
   cin>>input;
   for(int i=0;i<input.size();i++)
   {
-   output+=input[i]-key;
+   if(input[i]>=97 && input[i]-key<97)
+   {
+      output+=122-(input[i]-96-key); 
+      
+   }
+   else if(input[i]>=65 && input[i]-key<65)
+   {
+     output+=90-(input[i]-64-key);
+   }
+   else{
+      output+=input[i]-key;
+   }
   }
-  cout<<"\nDecrypt: "<<output;
+  cout<<"Message: "<<output<<endl;
+  
   
 }
 
