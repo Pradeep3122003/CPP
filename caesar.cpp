@@ -61,10 +61,15 @@ void encrypt()
   input="";
   output="";
   cout<<"Message: ";
-  cin>>input;
+  cin.ignore();
+  getline(cin,input);
   for(int i=0;i<input.size();i++)
   {
-   if(input[i]<=90 && input[i]+key>90)
+   if(input[i]==' ')
+   {
+     output+=input[i];
+   }
+   else if(input[i]<=90 && input[i]+key>90)
    {
       output+=64+input[i]+key-90;
       
@@ -88,10 +93,15 @@ void decrypt()
   input="";
   output="";
   cout<<"Cipher: ";
-  cin>>input;
+  cin.ignore();
+  getline(cin,input);
   for(int i=0;i<input.size();i++)
   {
-   if(input[i]>=97 && input[i]-key<97)
+   if(input[i]==' ')
+   {
+     output+=input[i];
+   }
+   else if(input[i]>=97 && input[i]-key<97)
    {
       output+=122-(input[i]-96-key); 
       
