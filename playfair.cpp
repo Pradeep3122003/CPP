@@ -122,34 +122,39 @@ cout<<"\n----------------------------------"<<endl;
 
 int row(char a)
 {
+int b;
   for(int i=0;i<5;i++)
      {
        for(int j=0;j<5;j++)
        {
           if(kgraph[i][j] == a)
           {
-             return i;
+             b= i;
+             break;
           }
        }
        
      }
-return 0;
+return b;
 }
 
 int col(char a)
 {
+int b;
  for(int i=0;i<5;i++)
      {
        for(int j=0;j<5;j++)
        {
           if(kgraph[i][j] == a)
           {
-             return j;
+             b= j;
+             break;
+
           }
        }
        
      }
-return 0;
+return b;
 }
 
 void encrypt()
@@ -194,17 +199,19 @@ for(int i=0;i<input.size();i+=2)
   
 }
 }
-if(c%2==1)
-{
-  c++;
-  temp+="X";
-}
+
 input=temp;
 temp="";
+if(c%2==1)
+{
+   input+="X";
+   c++;
+}
+
 cout<<"Input: "<<input<<endl;
 cout<<"Length: "<<c<<endl;
 
-for(int i=0;i<input.size();i+=2)
+for(int i=0;i<c;i+=2)
 {
   int h1,v1,h2,v2;
   h1=row(input[i]);
@@ -247,13 +254,13 @@ void decrypt()
   v2=col(input[i+1]);
   if(h1==h2)
   {
-    output+=kgraph[h1][(v1-1)%5];
-    output+=kgraph[h2][(v2-1)%5];
+    output+=kgraph[h1][(v1==0)?4:(v1-1)];
+    output+=kgraph[h2][(v2==0)?4:(v2-1)];
   }
   else if(v1==v2)
   {
-   output+=kgraph[(h1-1)%5][v1];
-   output+=kgraph[(h2-1)%5][v2];
+   output+=kgraph[(h1==0)?4:(h1-1)][v1];
+   output+=kgraph[(h2==0)?4:(h2-1)][v2];
   }
   else{
    output+=kgraph[h1][v2];
