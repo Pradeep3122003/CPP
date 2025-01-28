@@ -129,7 +129,7 @@ int b;
        {
           if(kgraph[i][j] == a)
           {
-             b= i;
+             b=i;
              break;
           }
        }
@@ -147,7 +147,7 @@ int b;
        {
           if(kgraph[i][j] == a)
           {
-             b= j;
+             b=j;
              break;
 
           }
@@ -202,11 +202,8 @@ for(int i=0;i<input.size();i+=2)
 
 input=temp;
 temp="";
-if(c%2==1)
-{
-   input+="X";
-   c++;
-}
+
+
 
 cout<<"Input: "<<input<<endl;
 cout<<"Length: "<<c<<endl;
@@ -220,13 +217,13 @@ for(int i=0;i<c;i+=2)
   v2=col(input[i+1]);
   if(h1==h2)
   {
-    output+=kgraph[h1][(v1+1)%5];
-    output+=kgraph[h2][(v2+1)%5];
+    output+=kgraph[h1][(v1==4)?0:(v1+1)%5];
+    output+=kgraph[h2][(v2==4)?0:(v2+1)%5];
   }
   else if(v1==v2)
   {
-   output+=kgraph[(h1+1)%5][v1];
-   output+=kgraph[(h2+1)%5][v2];
+   output+=kgraph[(h1==4)?0:(h1+1)%5][v1];
+   output+=kgraph[(h2==4)?0:(h2+1)%5][v2];
   }
   else{
    output+=kgraph[h1][v2];
