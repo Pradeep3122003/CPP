@@ -38,6 +38,7 @@ public:
      int a;
      while(1==1)
      {
+     cout<<"\n---------------------------"<<endl;
      cout<<"1. Key  2. Encrypt  3. Decrypt"<<"\noption: ";
      cin>>a;
 
@@ -63,9 +64,22 @@ void encrypt()
   cin>>input;
   for(int i=0;i<input.size();i++)
   {
-   output+=input[i]+key;
+   if(input[i]<=90 && input[i]+key>90)
+   {
+      output+=64+input[i]+key-90;
+      
+   }
+   else if(input[i]<=122 && input[i]+key>122)
+   {
+      output+=96+input[i]+key-122;
+   }
+   else{
+      output+=input[i]+key;
+   }
   }
-  cout<<"\nCipher: "<<output;
+  cout<<"Cipher: "<<output<<endl;
+  cout<<"\n---------------------------"<<endl;
+
   
 }
 
