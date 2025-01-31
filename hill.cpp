@@ -69,7 +69,13 @@ public:
 void encrypt()
 {
   
- 
+ cout<<"Enter text message(ignore spaces and special symbols):"<<endl;
+ cin.ignore();
+ getline(cin,input);
+ for(int i=0;i<input.size();i++)
+ {
+  
+ }
 
   
 }
