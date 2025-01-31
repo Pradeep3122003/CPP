@@ -4,13 +4,12 @@ using namespace std;
 class hill{
 public:
   string input, output;
-  int key[5][5], r, c;
+  int key[5][5], r;
 
   hill(){
-   cout<<"Key matrix rows: ";
+   cout<<"Key matrix rows/columns: ";
    cin>>r;
-   cout<<"\nKey matrix columns: ";
-   cin>>c;
+   
    cout<<"\n---------------------------"<<endl;
    newkey();
   }
@@ -19,13 +18,13 @@ public:
   { 
     cout<<"Enter key matrix:"<<endl;
     for(int i=0;i<r;i++){
-      for(int j=0;j<c;j++){
+      for(int j=0;j<r;j++){
          cin>>key[i][j];
       }
     }
     cout<<"\n----------------The key---------------------"<<endl;
     for(int i=0;i<r;i++){
-      for(int j=0;j<c;j++){
+      for(int j=0;j<r;j++){
          cout<<key[i][j]<<"\t";
       }
         cout<<endl;
