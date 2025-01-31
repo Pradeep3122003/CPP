@@ -1,30 +1,41 @@
 #include <iostream>
 using namespace std;
 
-class caesar{
+class hill{
 public:
   string input, output;
-  int key;
+  int key[5][5], r, c;
 
-  caesar(){
-   cout<<"Enter key: ";
-   cin>>key;
+  hill(){
+   cout<<"Key matrix rows: ";
+   cin>>r;
+   cout<<"\nKey matrix columns: ";
+   cin>>c;
    cout<<"\n---------------------------"<<endl;
-   keycheck();
+   newkey();
   }
   
-  void keycheck()
+  void newkey()
   { 
-    key=key%26;
-    string s=(key > 13)?"Great":"Good";
-    cout<<"Key: "<<key<<endl;
-    cout<<"Strength: "<<s<<endl;
+    cout<<"Enter key matrix:"<<endl;
+    for(int i=0;i<r;i++){
+      for(int j=0;j<c;j++){
+         cin>>key[i][j];
+      }
+    }
+    cout<<"\n----------------The key---------------------"<<endl;
+    for(int i=0;i<r;i++){
+      for(int j=0;j<c;j++){
+         cout<<key[i][j]<<"\t";
+      }
+        cout<<endl;
+    }
     cout<<"Continue/re-enter(y/n): ";
     char a;
     cin>>a;
     if(a=='n')
     {
-      caesar();
+      hill();
     }
     else
     {
@@ -39,12 +50,12 @@ public:
      while(1==1)
      {
      cout<<"\n---------------------------"<<endl;
-     cout<<"1. Key  2. Encrypt  3. Decrypt"<<"\noption: ";
+     cout<<"1. New Key  2. Encrypt  3. Decrypt"<<"\noption: ";
      cin>>a;
 
      switch(a)
      {
-       case 1: keycheck();
+       case 1: newkey();
            break;
        case 2: encrypt();
             break;
@@ -58,31 +69,7 @@ public:
 
 void encrypt()
 {
-  input="";
-  output="";
-  cout<<"Message: ";
-  cin.ignore();
-  getline(cin,input);
-  for(int i=0;i<input.size();i++)
-  {
-   if(input[i]==' ')
-   {
-     output+=input[i];
-   }
-   else if(input[i]<=90 && input[i]+key>90)
-   {
-      output+=64+input[i]+key-90;
-      
-   }
-   else if(input[i]<=122 && input[i]+key>122)
-   {
-      output+=96+input[i]+key-122;
-   }
-   else{
-      output+=input[i]+key;
-   }
-  }
-  cout<<"Cipher: "<<output<<endl;
+  
  
 
   
@@ -90,31 +77,7 @@ void encrypt()
 
 void decrypt()
 {
-  input="";
-  output="";
-  cout<<"Cipher: ";
-  cin.ignore();
-  getline(cin,input);
-  for(int i=0;i<input.size();i++)
-  {
-   if(input[i]==' ')
-   {
-     output+=input[i];
-   }
-   else if(input[i]>=97 && input[i]-key<97)
-   {
-      output+=122-(input[i]-96-key); 
-      
-   }
-   else if(input[i]>=65 && input[i]-key<65)
-   {
-     output+=90-(input[i]-64-key);
-   }
-   else{
-      output+=input[i]-key;
-   }
-  }
-  cout<<"Message: "<<output<<endl;
+  
   
   
 }
@@ -126,7 +89,7 @@ void decrypt()
 int main()
 {
 
-caesar obj1;
+hill obj1;
 
 return 0;
 }
